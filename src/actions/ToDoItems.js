@@ -2,38 +2,78 @@ import axios from 'axios';
 import * as types from '../constants/ToDoItems';
 
 
-function requestData() {
+function toDoItemsLoading() {
   return {
-    type: types.FETCH_TO_DO_ITEMS_LOADING,
+    type: types.TO_DO_ITEMS_FETCH_LOADING,
   };
 }
 
-function receiveData(json) {
+function toDoItemsLoaded(json) {
   return {
-    type: types.FETCH_TO_DO_ITEMS_LOADED,
+    type: types.TO_DO_ITEMS_FETCH_LOADED,
     data: json,
   };
 }
 
-function receiveError(json) {
+function toDoItemsError(json) {
   return {
-    type: types.FETCH_TO_DO_ITEMS_ERROR,
+    type: types.TO_DO_ITEMS_FETCH_ERROR,
     data: json,
   };
 }
 
-export function fetchData() {
+export function toDoItemsFetchData() {
   return (dispatch) => {
-    dispatch(requestData());
+    dispatch(toDoItemsLoading());
     return axios({
       url: 'http://localhost:3012/todolist',
       timeout: 20000,
       method: 'get',
       responseType: 'json',
     }).then((response) => {
-      dispatch(receiveData(response.data));
+      dispatch(toDoItemsLoaded(response.data));
     }).catch((response) => {
-      dispatch(receiveError(response.data));
+      dispatch(toDoItemsError(response.data));
+      // dispatch(pushState(null, '/error'));
+    });
+  };
+}
+
+function toDoItemsAddNewSending() {
+  return {
+    type: types.TO_DO_ITEMS_ADD_NEW_SENDING,
+  };
+}
+
+function toDoItemsAddNewSended(json) {
+  return {
+    type: types.TO_DO_ITEMS_ADD_NEW_SENDED,
+    data: json,
+  };
+}
+
+function toDoItemsAddNewError(json) {
+  return {
+    type: types.TO_DO_ITEMS_ADD_NEW_ERROR,
+    data: json,
+  };
+}
+
+export function toDoItemsAddNew(text) {
+  return (dispatch) => {
+    dispatch(toDoItemsAddNewSending());
+    return axios({
+      url: 'http://localhost:3012/todolist',
+      timeout: 20000,
+      method: 'post',
+      responseType: 'json',
+      data: {
+        text,
+      },
+    }).then((response) => {
+      dispatch(toDoItemsAddNewSended(response.data));
+    }).catch((response) => {
+      dispatch(toDoItemsAddNewError(response.data));
       // dispatch(pushState(null, '/error'));
     });
   };

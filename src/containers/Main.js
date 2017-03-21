@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 
 // import ToDoFilters          from '../connectors/ToDoConnectors/ToDoFilters'
 // import ToDoAddNew           from '../connectors/ToDoConnectors/ToDoAddNew'
-import ToDoItems from '../connectors/ToDoItems';
+import ToDoItemsShow from '../connectors/ToDoItems/ToDoItemsShow';
+import ToDoItemsAddNew from '../connectors/ToDoItems/ToDoItemsAddNew';
 // // import ToDoProgressBar      from '../connectors/ToDoConnectors/ToDoProgressBar'
 
 
@@ -13,7 +14,8 @@ export default class ToDo extends Component {
     return (
       <div className="todo">
         Main
-        <ToDoItems />
+        <ToDoItemsShow />
+        <ToDoItemsAddNew />
       </div>
 
     );

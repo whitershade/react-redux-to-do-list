@@ -1,11 +1,11 @@
 import React, { PropTypes, Component } from 'react';
 
-import ToDoListItems from '../components/ToDoItems.jsx';
+import ToDoListItems from '../components/ToDoItemsShow.jsx';
 
 
 export default class ToDoItems extends Component {
   componentDidMount() {
-    this.props.actions.fetchData();
+    this.props.actionsToDoItems.toDoItemsFetchData();
   }
 
   render() {
@@ -15,6 +15,6 @@ export default class ToDoItems extends Component {
 }
 
 ToDoItems.propTypes = {
-  actions: PropTypes.shape({ fetchData: React.PropTypes.string }).isRequired,
+  actionsToDoItems: PropTypes.shape({ toDoItemsFetchData: React.PropTypes.func }).isRequired,
   ToDoItemsArray: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

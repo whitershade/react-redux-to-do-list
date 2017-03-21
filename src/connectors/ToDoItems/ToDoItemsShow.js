@@ -1,8 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actionsToDoItems from '../actions/ToDoItems';
-import toDoItems from '../containers/ToDoItems';
+import * as actionsToDoItems from '../../actions/ToDoItems';
+import toDoItems from '../../containers/ToDoItemsShow';
 
 function mapStateToProps(state) {
   return {
@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionsToDoItems, dispatch),
+    actionsToDoItems: bindActionCreators(actionsToDoItems, dispatch),
   };
 }
 
