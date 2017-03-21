@@ -3,19 +3,21 @@ import * as types from '../constants/ToDoItems';
 
 
 function requestData() {
-  return { type: types.REQ_DATA };
+  return {
+    type: types.FETCH_TO_DO_ITEMS_LOADING,
+  };
 }
 
 function receiveData(json) {
   return {
-    type: types.RECV_DATA,
+    type: types.FETCH_TO_DO_ITEMS_LOADED,
     data: json,
   };
 }
 
 function receiveError(json) {
   return {
-    type: types.RECV_ERROR,
+    type: types.FETCH_TO_DO_ITEMS_ERROR,
     data: json,
   };
 }

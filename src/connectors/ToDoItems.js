@@ -2,11 +2,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as actionsToDoItems from '../actions/ToDoItems';
-import toDoItems from '../components/ToDoItems';
+import toDoItems from '../containers/ToDoItems';
 
 function mapStateToProps(state) {
   return {
-    ToDoItems: state.ToDoItems,
+    ToDoItemsArray: state.ToDoItems.data,
   };
 }
 

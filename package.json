@@ -43,7 +43,6 @@
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-airbnb-base": "^11.1.1",
     "eslint-loader": "^1.6.3",
-    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.1",
     "express": "^4.14.1",
@@ -78,6 +77,10 @@
     "root": true,
     "extends": [
       "airbnb"
-    ]
+    ],
+    "rules": {
+      "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+      "import/extensions": [2, { "js": "never","jsx": "always" }]
+    }
   }
 }

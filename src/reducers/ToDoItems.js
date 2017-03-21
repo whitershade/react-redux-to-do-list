@@ -1,17 +1,19 @@
 import * as types from '../constants/ToDoItems';
 
-export default function ToDoItems(state = {
+const initialState = {
   isLoading: false,
   data: [],
-  error: false }
-, action = null) {
+  error: false,
+};
+
+export default function ToDoItems(state = initialState, action = null) {
   switch (action.type) {
-    case types.RECV_ERROR:
-      return Object.assign({}, state, { isLoading: false, data: action.data, error: true });
-    case types.RECV_DATA:
-      return Object.assign({}, state, { isLoading: false, data: action.data, error: false });
-    case types.REQ_DATA:
+    case types.FETCH_TO_DO_ITEMS_LOADING:
       return Object.assign({}, state, { isLoading: true, error: false });
+    case types.FETCH_TO_DO_ITEMS_LOADED:
+      return Object.assign({}, state, { isLoading: false, data: action.data, error: false });
+    case types.FETCH_TO_DO_ITEMS_ERROR:
+      return Object.assign({}, state, { isLoading: false, data: action.data, error: true });
     default:
       return state;
   }
